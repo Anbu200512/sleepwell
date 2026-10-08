@@ -7,7 +7,7 @@
 // Initialize immediately before DOMContentLoaded to sync theme & direction
 (function initPreferences() {
   const savedTheme = localStorage.getItem('sleepwell_theme');
-  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  if (savedTheme === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
