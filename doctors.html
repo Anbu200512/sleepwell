@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Specialists & Doctors — SleepWell Sleep Disorder Clinic</title>
+  <meta name="description" content="Meet our board-certified somnologists, pulmonologists, neurologists, and sleep psychologists specializing in sleep apnea, insomnia, and CPAP therapy.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- Page Header -->
+<header class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+    <img src="https://images.pexels.com/photos/6627926/pexels-photo-6627926.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Medical team collaborating in a bright clinic" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-50/85 via-white/88 to-slate-50/92 dark:from-slate-900/90 dark:via-slate-950/92 dark:to-slate-950/95 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-teal-500/15 to-slate-900/40"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.78)_42%,rgba(255,255,255,0)_78%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.7)_42%,rgba(2,6,23,0)_78%)]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm">
+        <i data-lucide="award" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <span>Multidisciplinary Sleep Medicine Faculty</span>
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 tracking-tight">
+        Our Sleep Physicians & Specialists
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+        Fellowship-trained medical leaders dedicated to diagnosing sleep-disordered breathing, insomnia, circadian misalignment, and neurological sleep phenomena.
+      </p>
+
+      <!-- Specialty Filter Tabs -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+        <button type="button" data-specialty="all" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-teal-600 text-white">
+          All Specialists (6)
+        </button>
+        <button type="button" data-specialty="somnology" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          Somnologists
+        </button>
+        <button type="button" data-specialty="pulmonology" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          Pulmonologists
+        </button>
+        <button type="button" data-specialty="neurology" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          Neurologists
+        </button>
+        <button type="button" data-specialty="behavioral sleep medicine" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          Behavioral Sleep (CBT-I)
+        </button>
+        <button type="button" data-specialty="pediatric sleep" class="doctor-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+          Pediatric Sleep
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Doctors Grid -->
+  <main class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="doctors-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Dynamically populated by js/doctors.js with rich doctor profiles -->
+    </div>
+  </main>
+
+  <!-- Clinical Quality Standards -->
+  <section class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="p-8 sm:p-12 rounded-3xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300">Physician-Led Care</span>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2">
+            Every Sleep Study Is Interpreted by a Medical Doctor
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-2 max-w-2xl leading-relaxed">
+            Unlike mail-order test services that use unverified automated software, all SleepWell sleep recordings are reviewed epoch-by-epoch by our board-certified clinical faculty.
+          </p>
+        </div>
+        <button onclick="openAppointmentModal()" class="px-8 py-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md transition flex-shrink-0 flex items-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+          <span>Schedule Specialist Consultation</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script src="js/doctors.js?v=20261007f"></script>
+</body>
+</html>

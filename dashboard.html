@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard — SleepWell</title>
+  <meta name="description" content="SleepWell patient dashboard — manage appointments, sleep studies, CPAP orders, billing and profile.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          clinical: { 50:'#f0f9ff', 100:'#e0f2fe', 500:'#0ea5e9', 600:'#0284c7', 700:'#0369a1', 900:'#0c4a6e' },
+          teal: { 50:'#f0fdfa', 100:'#ccfbf1', 500:'#14b8a6', 600:'#0d9488', 700:'#0f766e', 800:'#115e59', 900:'#134e4a', 950:'#042f2e' }
+        }
+      } }
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    (function(){var t=localStorage.getItem('sleepwell_theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}document.documentElement.setAttribute('dir',localStorage.getItem('sleepwell_direction')||'ltr');})();
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200" data-page="dashboard">
+
+  <div id="drawer-overlay" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-[70] lg:hidden"></div>
+
+  <aside id="mobile-drawer" class="dashboard-drawer fixed inset-y-0 start-0 z-[80] w-72 max-w-[85vw] bg-white dark:bg-slate-900 border-e border-slate-200 dark:border-slate-800 overflow-y-auto shadow-2xl">
+    <div id="dash-sidebar"></div>
+  </aside>
+
+  <header class="fixed top-0 start-0 end-0 lg:start-72 z-50 bg-white/90 dark:bg-slate-900/90 glass-nav border-b border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 sm:gap-4">
+      <div class="flex items-center gap-3 min-w-0">
+        <button id="drawer-btn" class="lg:hidden w-10 h-10 shrink-0 rounded-xl grid place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        <div class="min-w-0">
+          <div class="font-bold text-slate-900 dark:text-white truncate">Patient Dashboard</div>
+          <div id="header-subtitle" class="hidden sm:block text-xs text-slate-400 truncate">SleepWell clinical patient portal</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2">
+        <button id="header-notif-btn" type="button" class="relative w-10 h-10 rounded-xl grid place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Notifications" aria-label="Notifications">
+          <i data-lucide="bell" class="w-[18px] h-[18px]"></i>
+          <span id="header-unread" class="hidden absolute top-1.5 end-1.5 min-w-[16px] h-4 px-1 rounded-full bg-rose-500 text-white text-[9px] font-bold grid place-items-center">0</span>
+        </button>
+        <button id="dir-toggle" type="button" onclick="toggleDirection()" class="hidden lg:grid w-10 h-10 rounded-xl place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Switch text direction" aria-label="Switch text direction">
+          <i data-lucide="arrow-left-right" class="w-[18px] h-[18px]"></i>
+        </button>
+        <button id="theme-toggle" type="button" onclick="toggleTheme()" class="hidden lg:grid w-10 h-10 rounded-xl place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle dark or light mode" aria-label="Toggle dark or light mode">
+          <span class="theme-icon-sun hidden"><i data-lucide="sun" class="w-[18px] h-[18px] text-amber-400"></i></span>
+          <span class="theme-icon-moon block"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <a href="#profile" class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/50 grid place-items-center text-teal-600 dark:text-teal-400 hover:bg-teal-100 dark:hover:bg-teal-950 transition" aria-label="Go to profile" title="Profile">
+          <i data-lucide="user-round" class="w-[18px] h-[18px]"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="dash-main" class="lg:ms-72 mt-16 min-h-[calc(100vh-4rem)] px-4 sm:px-6 lg:px-8 pt-6 pb-10"></main>
+
+  <div id="detail-modal" class="modal-backdrop hidden">
+    <div class="modal-panel"></div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

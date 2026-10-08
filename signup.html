@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — SleepWell Sleep & CPAP Clinic</title>
+  <meta name="description" content="Create your SleepWell account to schedule sleep studies, access CPAP therapy, and view clinical reports.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200 min-h-screen flex flex-col justify-between">
+
+  <!-- Theme & Direction Controls -->
+  <div class="fixed top-4 end-4 z-50 flex items-center gap-2">
+    <button id="dir-toggle" type="button" onclick="toggleDirection()" class="w-10 h-10 rounded-xl grid place-items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-teal-600 transition shadow-sm" title="Switch text direction" aria-label="Switch text direction">
+      <i data-lucide="arrow-left-right" class="w-[18px] h-[18px]"></i>
+    </button>
+    <button id="theme-toggle" type="button" onclick="toggleTheme()" class="w-10 h-10 rounded-xl grid place-items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-teal-600 transition shadow-sm" title="Toggle dark or light mode" aria-label="Toggle dark or light mode">
+      <span class="theme-icon-sun hidden"><i data-lucide="sun" class="w-[18px] h-[18px] text-amber-400"></i></span>
+      <span class="theme-icon-moon block"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+    </button>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex-1 py-16 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-xl">
+      
+      <!-- Card -->
+      <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-2xl p-8 sm:p-10 relative overflow-hidden">
+        
+        <!-- Brand Logo -->
+        <a href="index.html" class="flex items-center justify-center gap-2.5 mb-6 group" title="Back to home">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-600 via-teal-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </div>
+          <span class="text-xl font-black tracking-tight text-slate-900 dark:text-white group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Sleep<span class="text-teal-600 dark:text-teal-400">Well</span></span>
+        </a>
+
+        <div class="text-center mb-8">
+          <h1 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Create Account</h1>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Create your account to access records, appointments and clinic services</p>
+        </div>
+
+        <form id="patient-signup-form" class="space-y-4">
+          
+          <!-- Full Name -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+              Full Name
+            </label>
+            <div class="relative">
+              <input 
+                type="text" 
+                id="signup-name" 
+                required 
+                placeholder="e.g. Eleanor Roosevelt"
+                class="w-full pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              >
+              <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                <i data-lucide="user" class="w-4 h-4"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Email & Mobile -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Email Address
+              </label>
+              <div class="relative">
+                <input 
+                  type="email" 
+                  id="signup-email" 
+                  required 
+                  placeholder="name@example.com"
+                  class="w-full pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                >
+                <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Mobile Number
+              </label>
+              <div class="relative">
+                <input 
+                  type="tel" 
+                  id="signup-phone" 
+                  required 
+                  placeholder="+1 (555) 000-0000"
+                  class="w-full pl-10 pr-4 rtl:pl-4 rtl:pr-10 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+                >
+                <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+                  <i data-lucide="phone" class="w-4 h-4"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DOB & Primary Sleep Concern -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Date of Birth
+              </label>
+              <input 
+                type="date" 
+                id="signup-dob" 
+                required 
+                value="1990-05-15"
+                class="w-full px-3.5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              >
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Primary Sleep Concern
+              </label>
+              <select id="signup-concern" class="w-full px-3.5 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                <option value="Snoring / Suspected Sleep Apnea">Snoring / Suspected Sleep Apnea</option>
+                <option value="Chronic Insomnia / Restless Sleep">Chronic Insomnia / Restless Sleep</option>
+                <option value="CPAP Mask Issues / Non-Adherence">CPAP Mask Issues / Non-Adherence</option>
+                <option value="Excessive Daytime Sleepiness">Excessive Daytime Sleepiness</option>
+                <option value="Restless Legs / Limb Movements">Restless Legs / Limb Movements</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Password & Confirm Password -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Password
+              </label>
+              <input 
+                type="password" 
+                id="signup-password" 
+                required 
+                placeholder="At least 6 characters"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              >
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
+                Confirm Password
+              </label>
+              <input 
+                type="password" 
+                id="signup-confirm-password" 
+                required 
+                placeholder="Re-enter password"
+                class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+              >
+            </div>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 rtl:space-x-reverse"
+          >
+            <span>Create Account</span>
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+          </button>
+
+        </form>
+
+        <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 text-center">
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Already have an account?
+            <a href="login.html" class="text-teal-600 dark:text-teal-400 font-bold hover:underline">
+              Sign in
+            </a>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

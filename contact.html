@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — SleepWell Sleep Disorder & CPAP Clinic</title>
+  <meta name="description" content="Contact SleepWell Sleep Disorder & CPAP Clinic in Boston. Call, email, or send a message to schedule a sleep study, CPAP consultation, or CBT-I appointment.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- Hero -->
+  <header class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+    <img src="https://images.pexels.com/photos/8459996/pexels-photo-8459996.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Bright and welcoming clinic waiting room" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-50/85 via-white/88 to-slate-50/92 dark:from-slate-900/90 dark:via-slate-950/92 dark:to-slate-950/95 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-teal-500/15 to-slate-900/40"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.78)_42%,rgba(255,255,255,0)_78%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.7)_42%,rgba(2,6,23,0)_78%)]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50/90 dark:bg-teal-950/70 border border-teal-200/70 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm backdrop-blur-sm">
+        <i data-lucide="mail" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <span>We're Here to Help</span>
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 tracking-tight">
+        Contact SleepWell
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+        Reach our clinical care coordinators by phone, email, or message — we respond to every patient inquiry within one business day.
+      </p>
+    </div>
+  </header>
+
+  <!-- Contact Content -->
+  <main class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+      <!-- Contact Information -->
+      <div class="space-y-6">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+          <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            Clinic Information
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Our sleep clinicians, technologists, and CPAP care team are available for consultations, studies, and equipment support.
+          </p>
+
+          <div class="mt-6 space-y-4">
+            <div class="flex items-start space-x-4 rtl:space-x-reverse p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+              <div class="w-11 h-11 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="map-pin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Clinic Address</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  742 Evergreen Medical Pavilion, Suite 400,<br>Boston, MA 02115
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 rtl:space-x-reverse p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+              <div class="w-11 h-11 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="phone-call" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Phone Numbers</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Toll-Free: <a href="tel:+18005557533" class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">+1 (800) 555-SLEEP</a><br>
+                  Clinic: <a href="tel:+15553928471" class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">+1 (555) 392-8471</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 rtl:space-x-reverse p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+              <div class="w-11 h-11 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="mail" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Email</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Appointments: <a href="mailto:appointments@sleepwellclinic.com" class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">appointments@sleepwellclinic.com</a><br>
+                  General Inquiries: <a href="mailto:care@sleepwellclinic.com" class="font-semibold text-teal-600 dark:text-teal-400 hover:underline">care@sleepwellclinic.com</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 rtl:space-x-reverse p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+              <div class="w-11 h-11 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">Operating Hours</h3>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+                  Consultations: Mon – Fri (8:00 AM – 5:30 PM)<br>
+                  Sleep Lab: Daily (8:00 PM – 7:00 AM)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Emergency Note -->
+        <div class="p-5 rounded-3xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/40 flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-11 h-11 rounded-2xl bg-amber-500 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+            <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-bold text-amber-900 dark:text-amber-300">Medical Emergencies</h3>
+            <p class="text-xs text-amber-800 dark:text-amber-200 mt-1 leading-relaxed">
+              This form is not monitored for urgent medical needs. For emergencies, call 911 or visit your nearest emergency department.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+        <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+          Send Us a Message
+        </h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+          Tell us how we can help and a care coordinator will get back to you within one business day.
+        </p>
+
+        <form id="contact-form" class="mt-6 space-y-4" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="contact-name" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Full Name</label>
+              <input type="text" id="contact-name" name="name" required placeholder="Jane Doe"
+                class="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+            </div>
+            <div>
+              <label for="contact-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Phone Number</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="+1 (555) 000-0000"
+                class="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+            </div>
+          </div>
+
+          <div>
+            <label for="contact-email" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Email Address</label>
+            <input type="email" id="contact-email" name="email" required placeholder="jane@example.com"
+              class="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+          </div>
+
+          <div>
+            <label for="contact-subject" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">How Can We Help?</label>
+            <select id="contact-subject" name="subject"
+              class="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+              <option value="Schedule a Sleep Study">Schedule a Sleep Study</option>
+              <option value="Home Sleep Test Question">Home Sleep Test Question</option>
+              <option value="CPAP Support & Mask Fitting">CPAP Support &amp; Mask Fitting</option>
+              <option value="CBT-I Insomnia Program">CBT-I Insomnia Program</option>
+              <option value="Insurance & Billing">Insurance &amp; Billing</option>
+              <option value="Other Inquiry">Other Inquiry</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="contact-message" class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required placeholder="Briefly describe your symptoms, questions, or preferred appointment times..."
+              class="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-sm text-slate-800 dark:text-slate-100 placeholder-slate-400 focus:ring-2 focus:ring-teal-500 focus:outline-none resize-y"></textarea>
+          </div>
+
+          <div id="contact-success" class="hidden p-4 rounded-2xl bg-teal-50 dark:bg-teal-950/40 border border-teal-200 dark:border-teal-900/60 text-sm text-teal-800 dark:text-teal-300 font-medium">
+            Thank you — your message has been received. A care coordinator will contact you within one business day.
+          </div>
+
+          <button type="submit"
+            class="w-full px-6 py-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+            <span>Send Message</span>
+            <i data-lucide="mail" class="w-4 h-4"></i>
+          </button>
+
+          <p class="text-[11px] text-slate-400 dark:text-slate-500 text-center leading-relaxed">
+            By submitting, you agree to our HIPAA Privacy Notice. Do not include sensitive medical details in this form.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clinic Map -->
+  <section class="pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm overflow-hidden">
+      <div class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            Find Our Clinic
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            742 Evergreen Medical Pavilion, Suite 400, Boston, MA 02115 — free on-site parking and step-free access from the main entrance.
+          </p>
+        </div>
+        <a href="https://maps.google.com/maps?q=Boston,%20MA%2002115&z=15" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md hover:shadow-lg transition flex-shrink-0">
+          <i data-lucide="map-pin" class="w-4 h-4"></i>
+          <span>Get Directions</span>
+        </a>
+      </div>
+      <div class="relative w-full h-80 sm:h-96 border-t border-slate-200/80 dark:border-slate-800 bg-slate-100 dark:bg-slate-800">
+        <iframe
+          src="https://maps.google.com/maps?q=Boston,%20MA%2002115&z=15&output=embed"
+          title="SleepWell Clinic Location Map"
+          class="absolute inset-0 w-full h-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking CTA -->
+  <section class="py-16 bg-teal-50/50 dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-teal-600 text-white flex items-center justify-center shadow-md mb-4">
+        <i data-lucide="calendar-plus" class="w-7 h-7"></i>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+        Prefer to Schedule Directly?
+      </h2>
+      <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 max-w-xl mx-auto leading-relaxed">
+        Book an in-lab polysomnography, home sleep test, CPAP consultation, or CBT-I session in under two minutes.
+      </p>
+      <button type="button" onclick="openAppointmentModal()"
+        class="mt-6 inline-flex items-center space-x-2 rtl:space-x-reverse px-7 py-3.5 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold shadow-md hover:shadow-lg transition">
+        <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+        <span>Book an Appointment</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Clinical Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var form = document.getElementById('contact-form');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = document.getElementById('contact-name');
+        var email = document.getElementById('contact-email');
+        var message = document.getElementById('contact-message');
+        if (!name.value.trim() || !email.value.trim() || !message.value.trim()) {
+          form.reportValidity();
+          return;
+        }
+        document.getElementById('contact-success').classList.remove('hidden');
+        form.reset();
+        document.getElementById('contact-success').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  </script>
+</body>
+</html>

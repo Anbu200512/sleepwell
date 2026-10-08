@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SleepWell — Sleep Disorder & CPAP Clinic | Better Sleep. Better Health.</title>
+  <meta name="description" content="AASM-accredited clinical sleep testing, in-lab polysomnography, home sleep apnea tests, CPAP therapy titration, and comprehensive sleep disorder care.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            },
+            navy: {
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Navbar Mount Point -->
+  <div id="main-navbar"></div>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden bg-gradient-to-b from-sky-50/70 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+    <div class="absolute inset-0 z-0 opacity-40 dark:opacity-20 pointer-events-none">
+      <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-teal-400 blur-3xl"></div>
+      <div class="absolute top-1/2 -left-40 w-96 h-96 rounded-full bg-sky-400 blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left rtl:lg:text-right">
+          
+          <div class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+            <span>AASM-Accredited Sleep Medicine & CPAP Excellence Center</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            Better Sleep.<br>
+            <span class="bg-gradient-to-r from-teal-600 via-sky-600 to-teal-500 bg-clip-text text-transparent">Better Health.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+            Awaken your physical and mental potential with board-certified clinical somnologists. We deliver comprehensive in-lab polysomnography, convenient home sleep apnea testing, and precision CPAP auto-titration.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start rtl:lg:justify-end gap-3.5 pt-2">
+            <button 
+              type="button" 
+              onclick="openAppointmentModal('In-Lab Polysomnography (Sleep Study)')"
+              class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-xl shadow-teal-600/25 hover:shadow-teal-600/35 transition flex items-center justify-center space-x-2 rtl:space-x-reverse group"
+            >
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Book Sleep Study</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"></i>
+            </button>
+
+            <a 
+              href="services.html" 
+              class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/80 text-slate-800 dark:text-slate-200 font-bold text-sm shadow-sm transition flex items-center justify-center space-x-2 rtl:space-x-reverse"
+            >
+              <i data-lucide="stethoscope" class="w-4 h-4 text-teal-600"></i>
+              <span>Explore Services</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges & Clinical Metrics -->
+          <div class="pt-6 border-t border-slate-200/80 dark:border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left rtl:lg:text-right">
+            <div>
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">15,000+</span>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Studies Interpreted</p>
+            </div>
+            <div>
+              <span class="text-2xl sm:text-3xl font-extrabold text-teal-600 dark:text-teal-400">98%</span>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">CPAP Adherence Rate</p>
+            </div>
+            <div>
+              <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">48 hrs</span>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Report Turnaround</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Clinical Card -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative mx-auto max-w-md lg:max-w-none">
+            
+            <!-- Main Hero Image: Clinical Sleep Diagnostic Suite -->
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 bg-slate-900">
+              <img 
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" 
+                alt="Clinical Sleep Diagnostics Monitoring Suite" 
+                class="w-full h-[430px] object-cover"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+
+              <!-- Bottom Overlay Caption -->
+              <div class="absolute bottom-6 left-6 right-6 text-white">
+                <span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-teal-600 text-white">
+                  State-of-the-Art PSG Lab
+                </span>
+                <h3 class="text-lg font-bold mt-1.5 leading-snug">Level 1 Multi-Channel Sleep Diagnostics</h3>
+                <p class="text-xs text-slate-300 mt-1">Soundproof private overnight bedrooms with continuous non-invasive telemetry.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Sleep Health Expertise: In-Lab vs Home Testing -->
+  <section class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Clinical Diagnostics Overview</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+          Two Clinical Pathways to Restful Sleep
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          Whether you require multi-channel polysomnography or an expedited home sleep study, SleepWell delivers certified diagnostic precision.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Pathway 1: In-Lab Polysomnography -->
+        <div class="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-700/60 card-hover flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 rounded-2xl overflow-hidden mb-6 bg-slate-900">
+              <img 
+                src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80" 
+                alt="In-Lab Sleep Study Room" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute top-3 left-3 rtl:left-auto rtl:right-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-teal-600 text-white">Level 1 PSG</span>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">In-Lab Polysomnography</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              Conducted overnight in our luxury, acoustic-isolated clinical suites. Continuous monitoring of EEG brain activity, REM cycles, heart rhythms, limb movements, and arterial oxygen.
+            </p>
+
+            <ul class="mt-5 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                <span>Overnight registered polysomnographic technologist (RPSGT) on-site</span>
+              </li>
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                <span>Diagnoses complex sleep apnea, restless legs, and parasomnias</span>
+              </li>
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-teal-500 flex-shrink-0"></i>
+                <span>Split-night option with immediate CPAP titration calibration</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Overnight (8:30 PM - 6:30 AM)</span>
+            <button onclick="openAppointmentModal('In-Lab Polysomnography (Sleep Study)')" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition flex items-center space-x-1.5 rtl:space-x-reverse">
+              <span>Book In-Lab Study</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Pathway 2: Home Sleep Apnea Testing -->
+        <div class="bg-slate-50 dark:bg-slate-800/60 rounded-3xl p-8 border border-slate-200/80 dark:border-slate-700/60 card-hover flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 rounded-2xl overflow-hidden mb-6 bg-slate-900">
+              <img 
+                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=800&q=80" 
+                alt="Home Sleep Apnea Testing Kit" 
+                class="w-full h-full object-cover"
+              >
+              <div class="absolute top-3 left-3 rtl:left-auto rtl:right-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-600 text-white">Level 3 HSAT</span>
+              </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Home Sleep Apnea Testing (HSAT)</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+              Clinical-grade testing performed comfortably in your domestic bedroom. The portable device records respiratory airflow, pulse oximetry, and chest effort over 1 to 3 nights.
+            </p>
+
+            <ul class="mt-5 space-y-2.5 text-xs text-slate-600 dark:text-slate-300">
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 flex-shrink-0"></i>
+                <span>Fast home kit delivery or clinic pickup within 24 hours</span>
+              </li>
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 flex-shrink-0"></i>
+                <span>Intuitive self-application with 3-minute video guide</span>
+              </li>
+              <li class="flex items-center space-x-2 rtl:space-x-reverse">
+                <i data-lucide="check-circle" class="w-4 h-4 text-sky-500 flex-shrink-0"></i>
+                <span>Ideal for adults with suspected moderate-to-severe sleep apnea</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">1 to 3 Nights at Home</span>
+            <button onclick="openAppointmentModal('Home Sleep Apnea Study (HSAT)')" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition flex items-center space-x-1.5 rtl:space-x-reverse">
+              <span>Order Home Kit</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Common Sleep Concerns Section -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Targeted Clinical Treatments</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+          Recognizing Common Sleep Disorders
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          Untreated sleep disorders elevate cardiovascular risk, blood pressure, and mental exhaustion. Our clinical team identifies and treats the root cause.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Concern 1: OSA -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm card-hover flex flex-col h-full">
+          <div class="w-12 h-12 rounded-xl bg-teal-50 dark:bg-teal-950/50 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4">
+            <i data-lucide="wind" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Obstructive Sleep Apnea</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Repeated collapse of upper airway tissue causing loud snoring, oxygen desaturations, and micro-awakenings throughout the night.
+          </p>
+          <span class="mt-auto pt-4 inline-block text-[11px] font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wide">
+            Treatment: Auto-CPAP & Oral Devices
+          </span>
+        </div>
+
+        <!-- Concern 2: Chronic Insomnia -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm card-hover flex flex-col h-full">
+          <div class="w-12 h-12 rounded-xl bg-sky-50 dark:bg-sky-950/50 text-sky-600 flex items-center justify-center mb-4">
+            <i data-lucide="clock" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Chronic Insomnia</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Persistent difficulty initiating or maintaining sleep, nighttime hyperarousal, racing thoughts, and unrefreshing morning waking.
+          </p>
+          <span class="mt-auto pt-4 inline-block text-[11px] font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wide">
+            Treatment: Evidence-Based CBT-I
+          </span>
+        </div>
+
+        <!-- Concern 3: Restless Legs -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm card-hover flex flex-col h-full">
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 flex items-center justify-center mb-4">
+            <i data-lucide="activity" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Restless Legs & PLMD</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Irresistible urge to move the lower limbs in evening hours, accompanied by periodic limb twitching that fragments deep sleep.
+          </p>
+          <span class="mt-auto pt-4 inline-block text-[11px] font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wide">
+            Treatment: Neurological Therapy
+          </span>
+        </div>
+
+        <!-- Concern 4: CPAP Intolerance -->
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm card-hover flex flex-col h-full">
+          <div class="w-12 h-12 rounded-xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 flex items-center justify-center mb-4">
+            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">CPAP Mask Intolerance</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Struggling with mask air leaks, bridge-of-nose ulcers, claustrophobia, or dry nasal passages from inappropriate pressure levels.
+          </p>
+          <span class="mt-auto pt-4 inline-block text-[11px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wide">
+            Treatment: 3D Mask Refitting & EPR
+          </span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CPAP Therapy & Equipment Preview Section -->
+  <section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Image Grid -->
+        <div class="lg:col-span-6 relative">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="rounded-3xl overflow-hidden shadow-lg bg-slate-800">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/ResMed_CPAP_machine_and_mask.jpg/960px-ResMed_CPAP_machine_and_mask.jpg" 
+                alt="CPAP Auto-titration Device" 
+                class="w-full h-64 object-cover"
+              >
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-lg bg-slate-800 mt-6">
+              <img 
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=600&q=80" 
+                alt="CPAP Mask Fitting & Comfort Review" 
+                class="w-full h-64 object-cover"
+              >
+            </div>
+          </div>
+
+          <div class="absolute -bottom-4 left-6 right-6 p-4 rounded-2xl bg-white/95 dark:bg-slate-800/95 shadow-xl border border-slate-100 dark:border-slate-700 backdrop-blur-md flex items-center justify-between">
+            <div class="flex items-center space-x-3 rtl:space-x-reverse">
+              <i data-lucide="check" class="w-5 h-5 text-teal-500"></i>
+              <span class="text-xs font-bold text-slate-800 dark:text-slate-100">Cellular Cloud Telemetry Included</span>
+            </div>
+            <span class="text-[10px] uppercase font-bold text-teal-600 dark:text-teal-400">Nightly Sync</span>
+          </div>
+        </div>
+
+        <!-- Right Copy -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Positive Airway Pressure Care</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight">
+            Precision CPAP Therapy Designed for Complete Comfort
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+            Our clinic pairs advanced auto-adjusting algorithms with heated humidification and 3D facial mask contouring. We continuously review your cellular telemetry to ensure zero leaks and whisper-quiet breathing.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="sliders" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white">Auto-Titrating Pressure (APAP)</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                  Real-time breath-by-breath adjustment delivers higher pressure during deep REM sleep and gentle pressure during light sleep.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="droplets" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white">Heated Tubing & Climate Humidification</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                  Prevents condensation "rainout" in breathing tubes and completely eliminates dry mouth and morning congestion.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4 rtl:space-x-reverse">
+              <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="repeat" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-slate-900 dark:text-white">Automated Resupply & Compliance Tracking</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 leading-relaxed">
+                  Quarterly silicone cushion and hypoallergenic filter rotations delivered directly to your door, fully covered by insurance.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pt-4">
+            <button onclick="openAppointmentModal('CPAP Equipment Support & Mask Fitting')" class="px-6 py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold shadow-md transition flex items-center space-x-2 rtl:space-x-reverse">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Schedule CPAP Setup / Fitting</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Doctors Preview Section -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Clinical Leadership</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-1">
+            Meet Our Sleep Specialists
+          </h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">
+            Board-certified somnologists, pulmonologists, neurologists, and behavioral psychologists.
+          </p>
+        </div>
+        <a href="doctors.html" class="inline-flex items-center space-x-1.5 rtl:space-x-reverse text-sm font-bold text-teal-600 dark:text-teal-400 hover:text-teal-700 transition">
+          <span>View All Specialists</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Doctor 1: Dr. Marcus Vance -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm card-hover flex flex-col justify-between">
+          <div>
+            <div class="relative h-60 rounded-2xl overflow-hidden mb-5 bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Dr. Marcus Vance" class="w-full h-full object-cover object-top">
+              <span class="absolute bottom-3 left-3 rtl:left-auto rtl:right-3 px-3 py-1 rounded-full text-xs font-bold bg-teal-600 text-white">Somnology</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Dr. Marcus Vance, MD</h3>
+            <p class="text-xs font-medium text-teal-600 dark:text-teal-400">Lead Somnologist & Pulmonologist</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">MD, FCCP • 16+ Years Experience</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 line-clamp-3">
+              Specialist in obstructive sleep apnea, complex sleep architecture diagnostics, and personalized CPAP positive airway pressure titration protocols.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-500 flex items-center space-x-1 rtl:space-x-reverse">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+              <span>4.9 (142 reviews)</span>
+            </span>
+            <button onclick="openAppointmentModal('', 'Dr. Marcus Vance, MD')" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition">
+              Book Visit
+            </button>
+          </div>
+        </div>
+
+        <!-- Doctor 2: Dr. Elena Rostova -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm card-hover flex flex-col justify-between">
+          <div>
+            <div class="relative h-60 rounded-2xl overflow-hidden mb-5 bg-slate-800">
+              <img src="https://images.pexels.com/photos/7446991/pexels-photo-7446991.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dr. Elena Rostova" class="w-full h-full object-cover object-top">
+              <span class="absolute bottom-3 left-3 rtl:left-auto rtl:right-3 px-3 py-1 rounded-full text-xs font-bold bg-sky-600 text-white">Neurology</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Dr. Elena Rostova, MD, PhD</h3>
+            <p class="text-xs font-medium text-sky-600 dark:text-sky-400">Sleep Neurologist & Circadian Specialist</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">MD, PhD, AASM Fellow • 14+ Years</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 line-clamp-3">
+              Investigates central sleep anomalies, narcolepsy, REM behavior disorders, and restless legs syndrome, delivering neuro-protective sleep care.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-500 flex items-center space-x-1 rtl:space-x-reverse">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+              <span>4.9 (118 reviews)</span>
+            </span>
+            <button onclick="openAppointmentModal('', 'Dr. Elena Rostova, MD, PhD')" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition">
+              Book Visit
+            </button>
+          </div>
+        </div>
+
+        <!-- Doctor 3: Dr. Anita Patel -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 shadow-sm card-hover flex flex-col justify-between">
+          <div>
+            <div class="relative h-60 rounded-2xl overflow-hidden mb-5 bg-slate-800">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Dr. Anita Patel" class="w-full h-full object-cover object-top">
+              <span class="absolute bottom-3 left-3 rtl:left-auto rtl:right-3 px-3 py-1 rounded-full text-xs font-bold bg-teal-700 text-white">Behavioral Sleep</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Dr. Anita Patel, PhD, CBSM</h3>
+            <p class="text-xs font-medium text-teal-600 dark:text-teal-400">Behavioral Sleep Psychologist</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">PhD, DBSM Certified • 11+ Years</p>
+            <p class="text-xs text-slate-600 dark:text-slate-300 mt-3 line-clamp-3">
+              Leads evidence-based Cognitive Behavioral Therapy for Insomnia (CBT-I), sleep anxiety desensitization, and CPAP claustrophobia therapy.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-500 flex items-center space-x-1 rtl:space-x-reverse">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+              <span>5.0 (160 reviews)</span>
+            </span>
+            <button onclick="openAppointmentModal('', 'Dr. Anita Patel, PhD, CBSM')" class="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold transition">
+              Book Visit
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Patient Care Process (4-Step Journey) -->
+  <section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">A Proven Clinical Continuum</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+          Your Journey to Restorative Sleep
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          From initial consultation to lifelong therapy adherence, our coordinated multidisciplinary care supports every night of sleep.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+        
+        <!-- Step 1 -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 relative">
+          <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white font-bold text-sm flex items-center justify-center mb-4 shadow-md">
+            01
+          </span>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Diagnostic Consultation</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            In-depth evaluation of your sleep architecture, airway anatomy, Epworth score, and medical history.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 relative">
+          <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white font-bold text-sm flex items-center justify-center mb-4 shadow-md">
+            02
+          </span>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Comprehensive Sleep Study</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Level 1 In-lab Polysomnography or certified multi-channel Home Sleep Apnea Testing (HSAT).
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 relative">
+          <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white font-bold text-sm flex items-center justify-center mb-4 shadow-md">
+            03
+          </span>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Custom CPAP Calibration</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            3D mask fitting, heated humidification setup, and auto-titration fine-tuning for zero leak comfort.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/60 relative">
+          <span class="w-10 h-10 rounded-2xl bg-teal-600 text-white font-bold text-sm flex items-center justify-center mb-4 shadow-md">
+            04
+          </span>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Continuous Telemetry Care</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+            Nightly cellular adherence monitoring, physician reviews, and automated insurance resupplies.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Patient Experiences</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+          Transforming Rest, Health & Longevity
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          Read how diagnosed patients reclaimed their daytime clarity and nighttime calm with SleepWell.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-1 rtl:space-x-reverse text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+              "My snoring was severe and I awoke every morning with tension headaches. Dr. Vance arranged a home test followed by a precise AirSense 11 fitting. My AHI dropped from 32 down to 1.4 events per hour. My energy has completely rebounded."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" class="w-10 h-10 rounded-full object-cover" alt="David M.">
+            <div>
+              <h4 class="text-xs font-bold text-slate-900 dark:text-white">David Miller</h4>
+              <p class="text-[10px] text-teal-600 dark:text-teal-400">OSA Patient • 18 Months on Therapy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-1 rtl:space-x-reverse text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+              "The overnight polysomnography suite felt like a peaceful boutique hotel rather than a hospital. The technologists were attentive and gentle with sensors. Finding out I had moderate sleep apnea was life-changing."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" class="w-10 h-10 rounded-full object-cover" alt="Sarah J.">
+            <div>
+              <h4 class="text-xs font-bold text-slate-900 dark:text-white">Sarah Jenkins</h4>
+              <p class="text-[10px] text-teal-600 dark:text-teal-400">In-Lab Study & CPAP User</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-1 rtl:space-x-reverse text-amber-400 mb-4">
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            </div>
+            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed italic">
+              "I had given up on CPAP years ago due to bridge-of-nose pressure marks and claustrophobia. The respiratory therapists at SleepWell performed 3D scanning and fitted me with an under-nose cushion. Zero leaks and total comfort."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80" class="w-10 h-10 rounded-full object-cover" alt="Robert H.">
+            <div>
+              <h4 class="text-xs font-bold text-slate-900 dark:text-white">Robert Henderson</h4>
+              <p class="text-[10px] text-teal-600 dark:text-teal-400">Commercial Pilot • DOT Certified</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Accordion Section -->
+  <section class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-16">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Frequently Asked Questions</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-2">
+          Clinical Sleep Testing & CPAP FAQs
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300 mt-2">
+          Clear answers regarding insurance coverage, test preparation, and treatment.
+        </p>
+      </div>
+
+      <div class="space-y-4" id="faq-accordion-container">
+        
+        <!-- FAQ Item 1 -->
+        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-800/40">
+          <button type="button" onclick="toggleFaq('faq-1')" class="w-full p-5 text-left rtl:text-right flex items-center justify-between font-bold text-sm sm:text-base text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition">
+            <span>What is the difference between an In-Lab Sleep Study and a Home Sleep Test?</span>
+            <i data-lucide="chevron-down" id="faq-1-icon" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-1" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/60">
+            An in-lab polysomnogram (Level 1) records comprehensive physiological parameters—including EEG brain waves, sleep stages, limb movements, and cardiac telemetry under continuous technologist supervision. A Home Sleep Apnea Test (Level 3) focuses specifically on respiratory airflow, chest effort, and pulse oximetry to diagnose straightforward obstructive sleep apnea in your domestic bed.
+          </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-800/40">
+          <button type="button" onclick="toggleFaq('faq-2')" class="w-full p-5 text-left rtl:text-right flex items-center justify-between font-bold text-sm sm:text-base text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition">
+            <span>Does medical health insurance cover sleep studies and CPAP machines?</span>
+            <i data-lucide="chevron-down" id="faq-2-icon" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-2" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/60">
+            Yes. The majority of private insurance plans (including BlueCross BlueShield, Aetna, Cigna, UnitedHealthcare) and Medicare cover both diagnostic sleep studies and CPAP therapy when clinical medical necessity criteria are met. SleepWell handles all pre-authorizations and submits claims directly to your payer.
+          </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-800/40">
+          <button type="button" onclick="toggleFaq('faq-3')" class="w-full p-5 text-left rtl:text-right flex items-center justify-between font-bold text-sm sm:text-base text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition">
+            <span>How do I prepare for my overnight diagnostic polysomnogram?</span>
+            <i data-lucide="chevron-down" id="faq-3-icon" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-3" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/60">
+            Wash your hair thoroughly with shampoo (avoid conditioners, gels, or oils). Refrain from consuming caffeine or taking non-prescribed naps after 12:00 PM on testing day. Bring comfortable two-piece pajamas, your customary evening medications, and any personal toiletries.
+          </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-slate-50/50 dark:bg-slate-800/40">
+          <button type="button" onclick="toggleFaq('faq-4')" class="w-full p-5 text-left rtl:text-right flex items-center justify-between font-bold text-sm sm:text-base text-slate-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition">
+            <span>What if I cannot tolerate sleeping with a CPAP mask on my face?</span>
+            <i data-lucide="chevron-down" id="faq-4-icon" class="w-5 h-5 text-slate-400 transition-transform"></i>
+          </button>
+          <div id="faq-4" class="hidden p-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/60">
+            Our specialized CPAP Desensitization and Mask Fitting Clinic eliminates intolerance. We utilize 3D face scans to recommend ultra-minimal nasal cushions or cradle masks, configure Expiratory Pressure Relief (EPR) so breathing out feels natural, and fine-tune heated humidification to eliminate dry airways.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Final Call-to-Action Section -->
+  <section class="py-20 bg-gradient-to-r from-teal-700 via-teal-800 to-slate-900 text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-teal-500/30 text-teal-200 border border-teal-400/30 mb-4">
+        Restore Restorative Sleep Tonight
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-black tracking-tight max-w-3xl mx-auto leading-tight">
+        Take the First Step Toward Better Sleep and Better Health
+      </h2>
+      <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto mt-4 leading-relaxed">
+        Speak with a board-certified sleep coordinator today to schedule your in-lab diagnostic evaluation, home testing kit, or CPAP calibration.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+        <button onclick="openAppointmentModal()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white text-slate-900 hover:bg-slate-100 font-bold text-sm shadow-xl transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="calendar" class="w-4 h-4 text-teal-600"></i>
+          <span>Book Consultation Online</span>
+        </button>
+
+        <a href="tel:+15553928471" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-teal-900/60 border border-teal-500/50 hover:bg-teal-900/80 text-white font-bold text-sm shadow-sm transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="phone" class="w-4 h-4 text-teal-300"></i>
+          <span>Direct Clinical Line: (555) 392-8471</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Clinic Locations Section -->
+  <section id="contact" class="py-20 bg-slate-50 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        
+        <!-- Clinic Information -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">Clinical Facility & Intake</span>
+          <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">
+            Visit SleepWell Clinical Center
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            Conveniently located with dedicated private patient parking, soundproof sleep diagnostic bedrooms, and on-site CPAP equipment resupply inventory.
+          </p>
+
+          <div class="space-y-4 pt-2 text-xs sm:text-sm">
+            
+            <div class="flex items-start space-x-3.5 rtl:space-x-reverse">
+              <div class="w-9 h-9 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block">Main Clinical Center</strong>
+                <span class="text-slate-600 dark:text-slate-400">742 Evergreen Medical Pavilion, Suite 400, Boston, MA 02115</span>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3.5 rtl:space-x-reverse">
+              <div class="w-9 h-9 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block">Operating Clinical Hours</strong>
+                <span class="text-slate-600 dark:text-slate-400">Daytime Consultations: Mon - Fri (8:00 AM - 5:30 PM)<br>Overnight Polysomnography Lab: Daily (8:00 PM - 7:00 AM)</span>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-3.5 rtl:space-x-reverse">
+              <div class="w-9 h-9 rounded-xl bg-teal-50 dark:bg-teal-950 text-teal-600 dark:text-teal-400 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="phone-call" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <strong class="text-slate-900 dark:text-white block">24/7 CPAP Emergency Line</strong>
+                <span class="text-slate-600 dark:text-slate-400">Toll-Free: +1 (800) 555-SLEEP • Clinic: +1 (555) 392-8471</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Insurance Logos / Badges -->
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-xs">
+            <span class="font-bold text-slate-800 dark:text-slate-200 block mb-1">Direct Insurance In-Network Billing:</span>
+            <p class="text-slate-500 dark:text-slate-400">Medicare, BlueCross BlueShield, Aetna, Cigna, UnitedHealthcare, Humana & Regional PPO Plans.</p>
+          </div>
+
+        </div>
+
+        <!-- Contact & Booking Request Form -->
+        <div class="lg:col-span-7">
+          <div class="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xl">
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Send Clinical Inquiry or Study Request</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Our clinical triage team responds to inquiries within 24 hours.</p>
+
+            <form class="clinical-contact-form mt-6 space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">Your Full Name</label>
+                  <input type="text" name="name" required placeholder="e.g. John Doe" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">Phone Number</label>
+                  <input type="tel" name="phone" required placeholder="+1 (555) 000-0000" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">Email Address</label>
+                  <input type="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">Primary Clinical Need</label>
+                  <select name="service" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none">
+                    <option value="In-Lab Polysomnography">In-Lab Polysomnography (Sleep Study)</option>
+                    <option value="Home Sleep Apnea Test">Home Sleep Apnea Test (HSAT)</option>
+                    <option value="CPAP Titration & Mask Fitting">CPAP Titration & Mask Fitting</option>
+                    <option value="Physician Sleep Consultation">Physician Sleep Consultation</option>
+                    <option value="Insomnia CBT-I Evaluation">Insomnia CBT-I Evaluation</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase mb-1">Symptoms or Special Requests</label>
+                <textarea name="message" rows="3" placeholder="Please describe any snoring, morning fatigue, mask issues, or insurance inquiries..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center space-x-2 rtl:space-x-reverse">
+                <span>Submit Clinical Inquiry</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Clinical Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script>
+    function toggleFaq(id) {
+      const el = document.getElementById(id);
+      const icon = document.getElementById(id + '-icon');
+      if (el) {
+        el.classList.toggle('hidden');
+        if (icon) {
+          icon.style.transform = el.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+      }
+    }
+  </script>
+</body>
+</html>

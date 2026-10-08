@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Admin Portal — SleepWell Clinic Administration</title>
+  <meta name="description" content="Administrative control center for sleep study scheduling, patients records, CPAP orders, telemetry monitoring, and billing.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200" data-page="admin-dashboard">
+
+    <div id="drawer-overlay" class="hidden fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-[70] lg:hidden"></div>
+
+    <aside id="mobile-drawer" class="dashboard-drawer fixed inset-y-0 start-0 z-[80] w-72 max-w-[85vw] bg-white dark:bg-slate-900 border-e border-slate-200 dark:border-slate-800 overflow-y-auto shadow-2xl">
+      <div id="admin-sidebar" class="flex flex-col min-h-screen p-4 gap-4">
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-600 via-teal-500 to-teal-400 flex items-center justify-center text-white shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform">
+            <svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="text-lg font-black tracking-tight text-slate-900 dark:text-white">Sleep<span class="text-teal-600 dark:text-teal-400">Well</span></span>
+            <span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Admin Portal</span>
+          </div>
+        </a>
+
+        <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 p-3.5 flex items-center gap-3">
+          <div class="w-10 h-10 shrink-0 rounded-xl bg-teal-600 text-white grid place-items-center">
+            <i data-lucide="shield-alert" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <strong class="block text-xs font-bold text-slate-900 dark:text-white truncate">Clinical Director</strong>
+            <span class="block text-[10px] font-mono text-slate-400 truncate">admin@sleepwell.clinic</span>
+          </div>
+        </div>
+
+        <nav class="space-y-1">
+          <div class="px-3.5 pb-1 text-[11px] font-bold uppercase tracking-wider text-slate-400">Clinical Administration</div>
+
+          <a href="#admin-overview" data-tab="admin-panel-overview" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold bg-teal-600 text-white transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              <span>Overview</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-patients" data-tab="admin-panel-patients" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>Patients</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-appointments" data-tab="admin-panel-appointments" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+              <span>Appointments</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-studies" data-tab="admin-panel-studies" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              <span>Sleep Studies & Results</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-cpap" data-tab="admin-panel-cpap" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="cpu" class="w-4 h-4"></i>
+              <span>CPAP Orders & Telemetry</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-billing" data-tab="admin-panel-billing" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="receipt" class="w-4 h-4"></i>
+              <span>Billing & Claims</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-doctors" data-tab="admin-panel-doctors" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="user-check" class="w-4 h-4"></i>
+              <span>Doctors & Staff</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-enquiries" data-tab="admin-panel-enquiries" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="inbox" class="w-4 h-4"></i>
+              <span>Patient Enquiries</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+
+          <a href="#admin-settings" data-tab="admin-panel-settings" class="admin-tab-link flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+            <span class="flex items-center gap-2.5">
+              <i data-lucide="settings" class="w-4 h-4"></i>
+              <span>Clinic Settings</span>
+            </span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-60"></i>
+          </a>
+        </nav>
+
+        <div class="lg:hidden grid grid-cols-2 gap-2">
+          <button type="button" onclick="toggleDirection()" class="grid place-items-center py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="Switch text direction" aria-label="Switch text direction">
+            <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+          </button>
+          <button type="button" onclick="toggleTheme()" class="grid place-items-center py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition" title="Toggle dark or light mode" aria-label="Toggle dark or light mode">
+            <span class="theme-icon-sun hidden"><i data-lucide="sun" class="w-4 h-4 text-amber-400"></i></span>
+            <span class="theme-icon-moon block"><i data-lucide="moon" class="w-4 h-4"></i></span>
+          </button>
+        </div>
+
+        <button type="button" onclick="logoutUser()" class="mt-auto w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/30 transition">
+          <i data-lucide="log-out" class="w-4 h-4"></i>
+          <span>Log Out</span>
+        </button>
+
+      </div>
+    </aside>
+
+    <!-- Admin Top Bar -->
+    <header class="fixed top-0 start-0 end-0 lg:start-72 z-50 bg-white/90 dark:bg-slate-900/90 glass-nav border-b border-slate-200/80 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 sm:gap-4">
+        <div class="flex items-center gap-3 min-w-0">
+          <button id="admin-sidebar-toggle" type="button" class="lg:hidden w-10 h-10 shrink-0 rounded-xl grid place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+          <div class="min-w-0">
+            <div class="font-bold text-slate-900 dark:text-white truncate flex items-center gap-1.5">
+              <span class="truncate">Clinical Admin Portal</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-100 dark:bg-teal-950 text-teal-700 dark:text-teal-300 shrink-0 hidden sm:inline">Staff Mode</span>
+            </div>
+            <div class="hidden sm:block text-xs text-slate-400 truncate">Logged in as: Clinical Director (admin@sleepwell.clinic)</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <button type="button" id="btn-add-patient" class="px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition inline-flex items-center gap-1.5">
+            <i data-lucide="user-plus" class="w-3.5 h-3.5 text-teal-600"></i>
+            <span class="hidden md:inline">Add Patient</span>
+          </button>
+          <button type="button" id="btn-add-admin-apt" class="px-3 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold shadow-sm transition inline-flex items-center gap-1.5">
+            <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+            <span class="hidden md:inline">New Appointment</span>
+          </button>
+          <button id="dir-toggle" type="button" onclick="toggleDirection()" class="hidden lg:grid w-10 h-10 rounded-xl place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Switch text direction" aria-label="Switch text direction">
+            <i data-lucide="arrow-left-right" class="w-[18px] h-[18px]"></i>
+          </button>
+          <button id="theme-toggle" type="button" onclick="toggleTheme()" class="hidden lg:grid w-10 h-10 rounded-xl place-items-center text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Toggle dark or light mode" aria-label="Toggle dark or light mode">
+            <span class="theme-icon-sun hidden"><i data-lucide="sun" class="w-[18px] h-[18px] text-amber-400"></i></span>
+            <span class="theme-icon-moon block"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Admin Workspace -->
+    <main id="dash-main" class="lg:ms-72 mt-16 min-h-[calc(100vh-4rem)] px-4 sm:px-6 lg:px-8 pt-6 pb-10 space-y-6">
+
+        <!-- 1. OVERVIEW PANEL -->
+        <div id="admin-panel-overview" class="admin-panel space-y-6">
+          <!-- Key Overview Cards -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+            
+            <div class="h-full flex flex-col justify-between gap-2 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Total Patients</span>
+              <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="stat-patients-count">1,484</h3>
+              <span class="text-[10px] text-teal-600 font-semibold">+12 this week</span>
+            </div>
+
+            <div class="h-full flex flex-col justify-between gap-2 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Appointments</span>
+              <h3 class="text-2xl font-black text-teal-600 dark:text-teal-400" id="stat-appointments-count">18</h3>
+              <span class="text-[10px] text-slate-400">4 overnight studies</span>
+            </div>
+
+            <div class="h-full flex flex-col justify-between gap-2 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pending Studies</span>
+              <h3 class="text-2xl font-black text-amber-500" id="stat-studies-count">7</h3>
+              <span class="text-[10px] text-slate-400">Awaiting scoring</span>
+            </div>
+
+            <div class="h-full flex flex-col justify-between gap-2 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">CPAP Orders</span>
+              <h3 class="text-2xl font-black text-sky-600 dark:text-sky-400" id="stat-cpap-count">45</h3>
+              <span class="text-[10px] text-slate-400">97% compliant</span>
+            </div>
+
+            <div class="h-full flex flex-col justify-between gap-2 p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm col-span-2 sm:col-span-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Pending Billing</span>
+              <h3 class="text-2xl font-black text-slate-900 dark:text-white" id="stat-revenue-count">$4,250</h3>
+              <span class="text-[10px] text-teal-600">Insurance pending</span>
+            </div>
+
+          </div>
+
+          <!-- Recent Appointments Table in Overview -->
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+              <h3 class="text-lg font-bold text-slate-900 dark:text-white">Upcoming Clinical Studies & Consultations</h3>
+              <button onclick="document.querySelector('[data-tab=admin-panel-appointments]').click()" class="text-xs font-bold text-teal-600 hover:underline shrink-0 self-start sm:self-auto">
+                Manage All Appointments ?
+              </button>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Patient</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Clinical Service</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Schedule</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Attending Specialist</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-overview-appointments" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 2. PATIENTS PANEL -->
+        <div id="admin-panel-patients" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Patient Records Directory</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Demographics, diagnosed conditions, and therapy adherence.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Record ID</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Name</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Phone</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Diagnosis</th>
+                    <th class="px-4 py-3 whitespace-nowrap">CPAP Adherence</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Last Visit</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-patients-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. APPOINTMENTS PANEL -->
+        <div id="admin-panel-appointments" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Appointments & Study Schedule</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Update status (Confirmed, Completed, Rescheduled, Cancelled) or remove records.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Ref ID</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Patient</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Service</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Doctor</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Date & Time</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Change Status</th>
+                    <th class="px-4 py-3 text-right rtl:text-left whitespace-nowrap">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-appointments-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. SLEEP STUDIES PANEL -->
+        <div id="admin-panel-studies" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Polysomnography & Study Results Management</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Epoch scoring, AHI verification, and diagnostic report publishing.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Study ID</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Study Type</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Test Date</th>
+                    <th class="px-4 py-3 whitespace-nowrap">AHI Score</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Sleep Efficiency</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Physician</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-studies-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. CPAP ORDERS & TELEMETRY PANEL -->
+        <div id="admin-panel-cpap" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">CPAP Equipment & Delivery Management</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Dispatch tracking, cellular modem sync verification, and supply rotations.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Order Ref</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Device / Supply Item</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Order Date</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Serial #</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Update Status</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Logistics</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-cpap-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. BILLING PANEL -->
+        <div id="admin-panel-billing" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Clinical Invoicing & Copay Receipts</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Insurance pre-auth claims, copay processing, and revenue settlement.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Invoice #</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Date</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Service Claim</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Patient Copay</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Insurance Paid</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-billing-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. DOCTORS PANEL -->
+        <div id="admin-panel-doctors" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Medical Faculty & Duty Roster</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Active sleep medicine physicians, somnologists, and intake availability.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Physician</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Specialty</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Experience</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Clinic Schedule</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Intake Fee</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Duty Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-doctors-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. ENQUIRIES PANEL -->
+        <div id="admin-panel-enquiries" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Website Clinical Enquiries</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Incoming patient inquiries from Home 1 & Home 2 contact forms.</p>
+            </div>
+
+            <div class="overflow-x-auto -mx-1 px-1">
+              <table class="w-full text-left rtl:text-right text-xs">
+                <thead class="bg-slate-50 dark:bg-slate-800/60 text-slate-400 uppercase font-semibold">
+                  <tr>
+                    <th class="px-4 py-3 whitespace-nowrap">Inquiry ID</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Patient Name</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Contact</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Service Interest</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Message</th>
+                    <th class="px-4 py-3 whitespace-nowrap">Triage Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-enquiries-tbody" class="divide-y divide-slate-100 dark:divide-slate-800">
+                  <!-- Rendered by js/admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. CLINIC SETTINGS PANEL -->
+        <div id="admin-panel-settings" class="admin-panel hidden space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-slate-900 dark:text-white">Clinic System Configuration</h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Operating hours, emergency contact helpline, and notifications dispatch.</p>
+            </div>
+
+            <form id="admin-settings-form" class="space-y-4 max-w-2xl text-xs">
+              <div>
+                <label class="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">Clinical Practice Name</label>
+                <input type="text" id="setting-clinic-name" value="SleepWell Sleep Disorder & CPAP Clinic" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-semibold text-slate-900 dark:text-white">
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">24/7 CPAP Emergency Line</label>
+                <input type="text" id="setting-emergency-phone" value="+1 (800) 555-SLEEP" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-semibold text-slate-900 dark:text-white">
+              </div>
+
+              <div>
+                <label class="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1.5">Polysomnography Lab Hours</label>
+                <input type="text" value="Overnight: 8:00 PM - 7:00 AM (Mon - Sun)" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 font-semibold text-slate-900 dark:text-white">
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" class="px-6 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold transition shadow">
+                  Save Practice Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/main.js?v=20261007f"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js?v=20261008a"></script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — SleepWell Clinic</title>
+  <meta name="description" content="The requested clinical page could not be located. Return to SleepWell home or navigate to our sleep disorder services.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200 min-h-screen flex flex-col justify-between">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- Main 404 Area -->
+  <main class="flex-1 pt-32 pb-20 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-xl w-full text-center space-y-6">
+      
+      <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full bg-teal-500/20 animate-ping"></div>
+        <div class="relative w-24 h-24 rounded-3xl bg-gradient-to-tr from-teal-600 to-sky-600 text-white flex items-center justify-center shadow-xl">
+          <i data-lucide="moon" class="w-12 h-12"></i>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-600 dark:text-teal-400">404 Error: Non-REM State</span>
+        <h1 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white">
+          Restful Page Not Found
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
+          The clinical file or procedure URL you are seeking appears to have drifted asleep. Let’s guide you back to wellness.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+        <a href="index.html" class="px-6 py-3 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md transition flex items-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Return to Home 1</span>
+        </a>
+        <a href="home2.html" class="px-6 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold text-xs transition flex items-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="layout-grid" class="w-4 h-4 text-sky-500"></i>
+          <span>Home 2 (Diagnostic)</span>
+        </a>
+        <a href="services.html" class="px-6 py-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 font-bold text-xs transition flex items-center space-x-2 rtl:space-x-reverse">
+          <i data-lucide="activity" class="w-4 h-4 text-teal-500"></i>
+          <span>Clinical Services</span>
+        </a>
+      </div>
+
+      <!-- Quick Helpful Links -->
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <a href="doctors.html" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-teal-500 transition font-semibold">
+          Sleep Specialists
+        </a>
+        <a href="login.html" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-teal-500 transition font-semibold">
+          Patient Login
+        </a>
+        <a href="dashboard.html" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-teal-500 transition font-semibold">
+          Patient Portal
+        </a>
+        <a href="admin-dashboard.html" class="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-teal-500 transition font-semibold">
+          Admin Portal
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+</body>
+</html>

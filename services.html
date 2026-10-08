@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinical Services — SleepWell Sleep Disorder & CPAP Clinic</title>
+  <meta name="description" content="Explore our AASM-accredited clinical sleep studies, in-lab polysomnography, home testing, CPAP titration, mask fitting, and insomnia therapies.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- Page Header -->
+  <header class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+    <img src="https://images.pexels.com/photos/14267573/pexels-photo-14267573.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Bright clinical sleep suite with a bed near the window" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-50/85 via-white/88 to-slate-50/92 dark:from-slate-900/90 dark:via-slate-950/92 dark:to-slate-950/95 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-teal-500/15 to-slate-900/40"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.78)_42%,rgba(255,255,255,0)_78%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.7)_42%,rgba(2,6,23,0)_78%)]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm">
+        <i data-lucide="shield-check" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <span>Comprehensive Sleep Diagnostics & Respiratory Care</span>
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 tracking-tight">
+        Our Clinical Services
+      </h1>
+      <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mt-3 leading-relaxed">
+        From advanced in-lab polysomnography to auto-titrating CPAP therapy and cognitive behavioral insomnia treatments.
+      </p>
+
+      <!-- Category Filter Tabs & Search -->
+      <div class="mt-10 max-w-4xl mx-auto space-y-4">
+        
+        <!-- Search Box -->
+        <div class="relative max-w-md mx-auto">
+          <input 
+            type="text" 
+            id="service-search-input" 
+            placeholder="Search clinical services, CPT codes, symptoms..." 
+            class="w-full pl-11 pr-4 rtl:pl-4 rtl:pr-11 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 text-sm shadow-sm focus:ring-2 focus:ring-teal-500 focus:outline-none"
+          >
+          <div class="absolute inset-y-0 left-0 rtl:left-auto rtl:right-0 pl-3.5 rtl:pl-0 rtl:pr-3.5 flex items-center pointer-events-none text-slate-400">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2 pt-2">
+          <button type="button" data-category="all" class="service-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-teal-600 text-white">
+            All Clinical Services (6)
+          </button>
+          <button type="button" data-category="diagnostics" class="service-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+            Diagnostic Studies
+          </button>
+          <button type="button" data-category="cpap" class="service-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+            CPAP & Airway Therapy
+          </button>
+          <button type="button" data-category="consultations" class="service-filter-btn px-5 py-2.5 rounded-xl text-xs font-bold transition shadow-sm bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700">
+            Clinical Consultations & CBT-I
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Services Grid Section -->
+  <main class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="services-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Dynamically populated by js/services.js with all 6 clinical services -->
+    </div>
+  </main>
+
+  <!-- How to Book Section -->
+  <section class="py-16 sm:py-20 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm">
+          <i data-lucide="calendar-plus" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+          <span>Simple 4-Step Booking</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mt-4 tracking-tight">
+          How to Book Your Sleep Care
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
+          From selecting a service to receiving your physician-scored report, our clinical team handles every step.
+        </p>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        <!-- Step 1 -->
+        <div class="relative bg-slate-50 dark:bg-slate-800/60 rounded-3xl border border-slate-200/80 dark:border-slate-700 p-6 text-center card-hover">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-teal-600 text-white text-sm font-black shadow-md mb-4">1</span>
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-3">
+            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Choose Your Service</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+            Browse the clinical services above and open any card for full details, pricing, and CPT codes.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative bg-slate-50 dark:bg-slate-800/60 rounded-3xl border border-slate-200/80 dark:border-slate-700 p-6 text-center card-hover">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-teal-600 text-white text-sm font-black shadow-md mb-4">2</span>
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-3">
+            <i data-lucide="calendar-check" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Book an Appointment</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+            Pick a specialist and time slot online, or call our care coordinators to schedule in minutes.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative bg-slate-50 dark:bg-slate-800/60 rounded-3xl border border-slate-200/80 dark:border-slate-700 p-6 text-center card-hover">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-teal-600 text-white text-sm font-black shadow-md mb-4">3</span>
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-3">
+            <i data-lucide="bed" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Attend Your Study or Visit</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+            Arrive at our lab or test at home; our technologists guide you through every step of the recording.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative bg-slate-50 dark:bg-slate-800/60 rounded-3xl border border-slate-200/80 dark:border-slate-700 p-6 text-center card-hover">
+          <span class="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-teal-600 text-white text-sm font-black shadow-md mb-4">4</span>
+          <div class="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-teal-600 dark:text-teal-400 mb-3">
+            <i data-lucide="file-text" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">Receive Your Report</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+            Get your physician-scored results within 48-72 hours, plus a personalized treatment plan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Assurance Banner -->
+  <section class="py-16 bg-teal-50/50 dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left rtl:md:text-right">
+        
+        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+            <i data-lucide="shield-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">AASM-Accredited Protocols</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+              Every polysomnogram adheres to strict American Academy of Sleep Medicine technical scoring parameters.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+            <i data-lucide="file-check" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">Direct Insurance Coordination</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+              We obtain prior clinical authorization from Medicare and major PPO carriers for hassle-free patient coverage.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center flex-shrink-0 shadow-md">
+            <i data-lucide="activity" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">Long-Term Compliance Care</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+              Ongoing cellular modem monitoring and quarterly resupplies ensure maximum respiratory therapy adherence.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinical Footer -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About SleepWell — AASM-Accredited Sleep Disorder &amp; CPAP Clinic</title>
+  <meta name="description" content="Learn about SleepWell's mission, board-certified somnologists, state-of-the-art sleep lab facilities, accreditations, and our commitment to patient-centred sleep medicine.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- ── Hero Banner ── -->
+  <header class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-gradient-to-b from-teal-50/70 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1600&q=80" alt="SleepWell clinical diagnostics monitoring suite" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-teal-50/85 via-white/88 to-slate-50/92 dark:from-slate-900/90 dark:via-slate-950/92 dark:to-slate-950/95 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-teal-500/35 via-emerald-500/15 to-teal-900/40"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.78)_42%,rgba(255,255,255,0)_78%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.7)_42%,rgba(2,6,23,0)_78%)]"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50/90 dark:bg-teal-950/70 border border-teal-200/70 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm backdrop-blur-sm">
+        <i data-lucide="building-2" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <span>AASM-Accredited · Est. 2009 · Board-Certified Somnologists</span>
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 tracking-tight [text-shadow:0_2px_18px_rgba(255,255,255,0.55)] dark:[text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
+        About <span class="text-teal-600 dark:text-teal-400">SleepWell</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-700 dark:text-slate-200 font-medium max-w-2xl mx-auto mt-3 leading-relaxed [text-shadow:0_1px_12px_rgba(255,255,255,0.5)] dark:[text-shadow:0_1px_12px_rgba(0,0,0,0.55)]">
+        A decade and a half of excellence in sleep medicine — built on science, driven by compassion, and dedicated to giving every patient restorative sleep.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a href="services.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold shadow-md shadow-teal-600/30 hover:shadow-lg hover:shadow-teal-600/40 hover:-translate-y-0.5 transition-all">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          <span>Our Services</span>
+        </a>
+        <a href="doctors.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-2.5 rounded-xl bg-white/85 dark:bg-slate-950/75 backdrop-blur-sm border border-teal-600/40 dark:border-teal-500/40 text-teal-700 dark:text-teal-300 text-sm font-semibold hover:bg-teal-50 dark:hover:bg-teal-950/60 shadow-sm hover:shadow-md transition-all">
+          <i data-lucide="users" class="w-4 h-4"></i>
+          <span>Meet Our Doctors</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Stats Row ── -->
+  <section class="py-10 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div class="p-4">
+          <p class="text-3xl font-black text-teal-600 dark:text-teal-400">15+</p>
+          <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">Years in Practice</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl font-black text-teal-600 dark:text-teal-400">18,400+</p>
+          <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">Patients Treated</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl font-black text-teal-600 dark:text-teal-400">12</p>
+          <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">Board-Certified Specialists</p>
+        </div>
+        <div class="p-4">
+          <p class="text-3xl font-black text-teal-600 dark:text-teal-400">97%</p>
+          <p class="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-1 uppercase tracking-wider">Patient Satisfaction</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Mission & History ── -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Text block -->
+        <div class="space-y-6">
+          <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide">
+            <i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i>
+            <span>Our Mission</span>
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight leading-tight">
+            Restoring Lives, <br class="hidden sm:block"> One Night at a Time
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            SleepWell was founded in 2009 by Dr. Amara Singh and Dr. James Okonkwo — two fellowship-trained somnologists who shared a vision: make world-class sleep medicine accessible, compassionate, and evidence-driven for every patient who walks through our doors.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Our mission is simple: <em class="font-semibold text-teal-600 dark:text-teal-400">Better Sleep. Better Health.</em> We combine board-certified clinical expertise with the latest diagnostic technology to diagnose, treat, and educate — transforming our patients' quality of life.
+          </p>
+        </div>
+        <!-- Visual card -->
+        <div class="relative">
+          <div class="rounded-3xl overflow-hidden bg-gradient-to-br from-teal-600 to-teal-800 p-8 shadow-2xl shadow-teal-900/20">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white/10 rounded-2xl p-5 space-y-2 backdrop-blur-sm">
+                <i data-lucide="moon" class="w-7 h-7 text-teal-200"></i>
+                <p class="text-white font-bold text-sm">Founded</p>
+                <p class="text-teal-200 text-xs">2009 — Downtown Sleep Lab</p>
+              </div>
+              <div class="bg-white/10 rounded-2xl p-5 space-y-2 backdrop-blur-sm">
+                <i data-lucide="shield-check" class="w-7 h-7 text-teal-200"></i>
+                <p class="text-white font-bold text-sm">AASM Accredited</p>
+                <p class="text-teal-200 text-xs">Since 2011, renewed annually</p>
+              </div>
+              <div class="bg-white/10 rounded-2xl p-5 space-y-2 backdrop-blur-sm">
+                <i data-lucide="bed" class="w-7 h-7 text-teal-200"></i>
+                <p class="text-white font-bold text-sm">18 Sleep Beds</p>
+                <p class="text-teal-200 text-xs">In-lab &amp; Pediatric Units</p>
+              </div>
+              <div class="bg-white/10 rounded-2xl p-5 space-y-2 backdrop-blur-sm">
+                <i data-lucide="video" class="w-7 h-7 text-teal-200"></i>
+                <p class="text-white font-bold text-sm">Telehealth</p>
+                <p class="text-teal-200 text-xs">Remote consultations available</p>
+              </div>
+            </div>
+          </div>
+          <!-- Floating badge -->
+          <div class="absolute -bottom-4 -right-4 rtl:-right-auto rtl:-left-4 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 px-5 py-3 flex items-center space-x-3 rtl:space-x-reverse">
+            <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
+              <i data-lucide="award" class="w-5 h-5 text-teal-600"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-slate-800 dark:text-white">Best Sleep Clinic 2025</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Regional Healthcare Awards</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Choose Us ── -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+          <span>Why SleepWell</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">The SleepWell Difference</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm leading-relaxed">We set the standard for patient-centred sleep medicine with clinical rigour and genuine care.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
+            <i data-lucide="microscope" class="w-6 h-6 text-teal-600 dark:text-teal-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Gold-Standard Diagnostics</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Full in-lab polysomnography with 32-channel EEG, SpO₂ monitoring, end-tidal CO₂, and video recording — interpreted same-day by a board-certified sleep physician.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-sky-50 dark:bg-sky-950/40 flex items-center justify-center">
+            <i data-lucide="users" class="w-6 h-6 text-sky-600 dark:text-sky-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Multidisciplinary Team</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Somnologists, pulmonologists, ENT surgeons, dental sleep medicine specialists, and licensed behavioral therapists collaborate on every complex case.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
+            <i data-lucide="heart-pulse" class="w-6 h-6 text-teal-600 dark:text-teal-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Patient-Centred Care</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">From first consultation through long-term CPAP adherence support, our care coordinators guide you every step of the way with personalised follow-up plans.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-950/40 flex items-center justify-center">
+            <i data-lucide="cpu" class="w-6 h-6 text-amber-600 dark:text-amber-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Cutting-Edge Technology</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Natus Grael 4K amplifiers, WatchPAT One home sleep testing, ResMed AirSense 11 AutoCPAP, and AI-assisted scoring software for the most accurate results.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
+            <i data-lucide="shield-check" class="w-6 h-6 text-teal-600 dark:text-teal-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Insurance & Compliance</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">We are in-network with major PPO plans and Medicare. Our billing team handles prior authorisations so you can focus on your health, not paperwork.</p>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-7 space-y-4 hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="w-12 h-12 rounded-2xl bg-violet-50 dark:bg-violet-950/40 flex items-center justify-center">
+            <i data-lucide="book-open" class="w-6 h-6 text-violet-600 dark:text-violet-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-800 dark:text-white text-base">Research & Education</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Active IRB-approved clinical trials, residency teaching affiliation, and a public sleep-education library empowering patients and the wider community.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Accreditations & Certifications ── -->
+  <section class="py-16 bg-slate-50 dark:bg-slate-950 border-y border-slate-100 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-black text-slate-800 dark:text-white">Accreditations &amp; Certifications</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Recognised by the leading bodies in sleep and respiratory medicine.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Each badge -->
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="shield-check" class="w-8 h-8 text-teal-600"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">AASM<br>Accredited</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="award" class="w-8 h-8 text-sky-600"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">ABIM<br>Board Certified</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="stethoscope" class="w-8 h-8 text-teal-600"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">RPSGT<br>Technologists</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="heart" class="w-8 h-8 text-rose-500"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">AHA<br>Heart Safe</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="building-2" class="w-8 h-8 text-amber-600"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">Joint Commission<br>Certified</span>
+        </div>
+        <div class="flex flex-col items-center gap-2 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm">
+          <i data-lucide="badge-check" class="w-8 h-8 text-teal-600"></i>
+          <span class="text-xs font-bold text-slate-700 dark:text-slate-200 text-center leading-tight">Medicare<br>Approved</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Facilities ── -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="building" class="w-3.5 h-3.5"></i>
+          <span>Our Facilities</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Designed for Restful Diagnostics</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm leading-relaxed">Hotel-quality private rooms equipped with research-grade polysomnography systems.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="rounded-3xl bg-gradient-to-br from-teal-600 to-teal-800 p-8 text-white space-y-4 shadow-xl shadow-teal-900/20">
+          <i data-lucide="bed" class="w-8 h-8 text-teal-200"></i>
+          <h3 class="font-bold text-lg">In-Lab Sleep Suites</h3>
+          <p class="text-teal-100 text-sm leading-relaxed">18 private, hotel-quality sleep rooms with adjustable lighting, memory-foam mattresses, and ensuite bathrooms — designed to replicate your home sleep environment.</p>
+          <ul class="text-teal-200 text-xs space-y-1">
+            <li>• Full 32-channel polysomnography</li>
+            <li>• Night-vision video monitoring</li>
+            <li>• Temperature-controlled rooms</li>
+            <li>• Dedicated pediatric wing (ages 3+)</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-8 space-y-4 shadow-sm">
+          <i data-lucide="cpu" class="w-8 h-8 text-sky-600 dark:text-sky-400"></i>
+          <h3 class="font-bold text-lg text-slate-800 dark:text-white">CPAP Therapy Suite</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">A fully equipped equipment centre for mask fittings, CPAP titration, replacement supplies, and remote telemonitoring setup.</p>
+          <ul class="text-slate-400 text-xs space-y-1">
+            <li>• 40+ mask styles in stock</li>
+            <li>• ResMed &amp; Philips Respironics equipment</li>
+            <li>• Cellular modem adherence monitoring</li>
+            <li>• Same-day equipment pickup</li>
+          </ul>
+        </div>
+
+        <div class="rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-8 space-y-4 shadow-sm">
+          <i data-lucide="video" class="w-8 h-8 text-violet-600 dark:text-violet-400"></i>
+          <h3 class="font-bold text-lg text-slate-800 dark:text-white">Telehealth Clinic</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">HIPAA-compliant video consultations for follow-up appointments, CPAP data reviews, and CBT-I therapy sessions — no travel required.</p>
+          <ul class="text-slate-400 text-xs space-y-1">
+            <li>• Same-day telehealth slots available</li>
+            <li>• Secure encrypted video platform</li>
+            <li>• Prescription &amp; results delivered digitally</li>
+            <li>• Multi-language interpreter service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Team Preview ── -->
+  <section class="py-20 bg-slate-50 dark:bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="stethoscope" class="w-3.5 h-3.5"></i>
+          <span>Leadership Team</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Meet Our Founders</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm leading-relaxed">Fellowship-trained physicians with decades of combined sleep medicine experience.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Founder 1 -->
+        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-lg hover:shadow-teal-500/5 transition-shadow group">
+          <div class="relative h-52 bg-gradient-to-br from-teal-500 to-teal-700 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=800&q=80" alt="Dr. Amara Singh, Co-Founder and Medical Director" class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-teal-950/75 via-teal-600/15 to-transparent"></div>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-white/90 dark:bg-slate-950/80 text-teal-700 dark:text-teal-300 text-[11px] font-extrabold shadow-sm">MD, FCCP</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-bold text-slate-800 dark:text-white text-base">Dr. Amara Singh, MD, FCCP</h3>
+            <p class="text-teal-600 dark:text-teal-400 text-xs font-semibold">Co-Founder & Medical Director</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Fellowship in Sleep Medicine at Johns Hopkins. 20+ years diagnosing OSA, narcolepsy, and complex parasomnias. Principal investigator on 8 NIH-funded sleep trials.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 text-xs font-semibold border border-teal-200/50 dark:border-teal-800">OSA Specialist</span>
+              <span class="px-2 py-0.5 rounded-full bg-teal-50 dark:bg-teal-950/50 text-teal-700 dark:text-teal-300 text-xs font-semibold border border-teal-200/50 dark:border-teal-800">Narcolepsy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Founder 2 -->
+        <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-lg hover:shadow-teal-500/5 transition-shadow group">
+          <div class="relative h-52 bg-gradient-to-br from-sky-500 to-sky-700 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=800&q=80" alt="Dr. James Okonkwo, Co-Founder and Research Director" class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-sky-950/75 via-sky-600/15 to-transparent"></div>
+            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-white/90 dark:bg-slate-950/80 text-sky-700 dark:text-sky-300 text-[11px] font-extrabold shadow-sm">MD, PhD</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <h3 class="font-bold text-slate-800 dark:text-white text-base">Dr. James Okonkwo, MD, PhD</h3>
+            <p class="text-sky-600 dark:text-sky-400 text-xs font-semibold">Co-Founder & Research Director</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Double-board certified in Pulmonology and Sleep Medicine. Pioneered a patented adaptive CPAP algorithm now used in over 60 clinics nationwide. MIT PhD in biomedical engineering.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 text-xs font-semibold border border-sky-200/50 dark:border-sky-800">Pulmonology</span>
+              <span class="px-2 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/50 text-sky-700 dark:text-sky-300 text-xs font-semibold border border-sky-200/50 dark:border-sky-800">CPAP Research</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Team CTA -->
+        <div class="rounded-3xl border-2 border-dashed border-teal-200 dark:border-teal-800 p-8 flex flex-col items-center justify-center text-center space-y-4 hover:border-teal-400 dark:hover:border-teal-600 transition-colors">
+          <div class="w-14 h-14 rounded-full bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center">
+            <i data-lucide="users" class="w-7 h-7 text-teal-600 dark:text-teal-400"></i>
+          </div>
+          <h3 class="font-bold text-slate-700 dark:text-slate-200 text-base">+10 More Specialists</h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm">Board-certified somnologists, RPSGT technologists, CBT-I therapists, and care coordinators.</p>
+          <a href="doctors.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-semibold shadow-md transition">
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <span>View Full Team</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Awards & Recognition ── -->
+  <section class="py-16 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-black text-slate-800 dark:text-white">Awards &amp; Recognition</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Independently recognised for clinical excellence and patient experience.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-950/40 flex items-center justify-center shrink-0">
+            <i data-lucide="trophy" class="w-5 h-5 text-amber-500"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800 dark:text-white text-sm">Best Sleep Clinic 2025</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Regional Healthcare Excellence Awards</p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-10 h-10 rounded-xl bg-teal-50 dark:bg-teal-950/60 flex items-center justify-center shrink-0">
+            <i data-lucide="star" class="w-5 h-5 text-teal-600"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800 dark:text-white text-sm">Top-Rated 5-Star Clinic</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Healthgrades · 2022–2025</p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-10 h-10 rounded-xl bg-sky-50 dark:bg-sky-950/40 flex items-center justify-center shrink-0">
+            <i data-lucide="microscope" class="w-5 h-5 text-sky-600"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800 dark:text-white text-sm">Research Excellence Award</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">American Academy of Sleep Medicine, 2024</p>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 p-5 flex items-start space-x-4 rtl:space-x-reverse">
+          <div class="w-10 h-10 rounded-xl bg-violet-50 dark:bg-violet-950/40 flex items-center justify-center shrink-0">
+            <i data-lucide="heart" class="w-5 h-5 text-violet-600"></i>
+          </div>
+          <div>
+            <p class="font-bold text-slate-800 dark:text-white text-sm">Patient Choice Award</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">State Medical Board · 2023 &amp; 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="py-20 bg-gradient-to-br from-teal-600 via-teal-700 to-teal-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Ready to Sleep Better?</h2>
+      <p class="text-teal-100 text-base leading-relaxed max-w-xl mx-auto">
+        Schedule your comprehensive sleep assessment with one of our board-certified somnologists today. Most insurance plans accepted.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <button onclick="openAppointmentModal()" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 rounded-xl bg-white text-teal-700 font-bold text-sm shadow-lg hover:bg-teal-50 transition">
+          <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+          <span>Book a Sleep Assessment</span>
+        </button>
+        <a href="blog.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 rounded-xl border-2 border-white/40 text-white font-semibold text-sm hover:bg-white/10 transition">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>Sleep Health Blog</span>
+        </a>
+      </div>
+      <p class="text-teal-200/70 text-xs">Medical Disclaimer: Content on this page is for informational purposes only and does not constitute medical advice.</p>
+    </div>
+  </section>
+
+  <!-- ── Clinical Footer ── -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+  </script>
+</body>
+</html>
+

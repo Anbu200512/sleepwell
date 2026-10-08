@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleep Health Blog — SleepWell Sleep Disorder &amp; CPAP Clinic</title>
+  <meta name="description" content="Evidence-based articles on sleep hygiene, sleep apnoea, CPAP therapy, insomnia, and sleep study results from SleepWell's board-certified somnologists.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230d9488'><path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            clinical: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Prevent Theme & RTL Flash -->
+  <script>
+    (function() {
+      const theme = localStorage.getItem('sleepwell_theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      const dir = localStorage.getItem('sleepwell_direction') || 'ltr';
+      document.documentElement.setAttribute('dir', dir);
+    })();
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 font-sans antialiased transition-colors duration-200">
+
+  <!-- Standardized SleepWell Navbar -->
+  <div id="main-navbar"></div>
+
+  <!-- ── Hero Banner ── -->
+  <header class="relative pt-32 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-slate-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950 border-b border-slate-200/80 dark:border-slate-800">
+    <img src="https://images.unsplash.com/photo-1752407828538-17e055766592?auto=format&fit=crop&w=1600&q=80" alt="Bright bedroom with sheer curtains and morning sunlight" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-gradient-to-b from-sky-50/85 via-white/88 to-slate-50/92 dark:from-slate-900/90 dark:via-slate-950/92 dark:to-slate-950/95 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-500/30 via-teal-500/15 to-slate-900/40"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.94)_0%,rgba(255,255,255,0.78)_42%,rgba(255,255,255,0)_78%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(2,6,23,0.92)_0%,rgba(2,6,23,0.7)_42%,rgba(2,6,23,0)_78%)]"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3.5 py-1.5 rounded-full bg-teal-50/90 dark:bg-teal-950/70 border border-teal-200/70 dark:border-teal-800/80 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide shadow-sm backdrop-blur-sm">
+        <i data-lucide="book-open" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i>
+        <span>Sleep Science Journal · Written by Our Somnologists</span>
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white mt-4 tracking-tight [text-shadow:0_2px_18px_rgba(255,255,255,0.55)] dark:[text-shadow:0_2px_18px_rgba(0,0,0,0.6)]">
+        Sleep Health <span class="text-teal-600 dark:text-teal-400">Blog</span>
+      </h1>
+      <p class="text-base sm:text-lg text-slate-700 dark:text-slate-200 font-medium max-w-2xl mx-auto mt-3 leading-relaxed [text-shadow:0_1px_12px_rgba(255,255,255,0.5)] dark:[text-shadow:0_1px_12px_rgba(0,0,0,0.55)]">
+        Practical, evidence-based reading on sleep hygiene, sleep apnoea, CPAP therapy, and the science behind a good night's rest.
+      </p>
+      <!-- Quick jump links -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <a href="#featured" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition shadow-sm">Featured</a>
+        <a href="#latest" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition shadow-sm">Latest Articles</a>
+        <a href="#topics" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition shadow-sm">Browse Topics</a>
+        <a href="#newsletter" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition shadow-sm">Newsletter</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Featured Article ── -->
+  <section id="featured" class="py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-400"></i>
+          <span>Featured Story</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Editor's Pick This Week</h2>
+      </div>
+
+      <article class="group grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-[2rem] overflow-hidden bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-xl hover:shadow-2xl hover:shadow-teal-500/10 transition-shadow">
+        <div class="relative overflow-hidden h-64 lg:h-auto">
+          <img src="https://images.pexels.com/photos/6943426/pexels-photo-6943426.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Man lying in bed using his phone at night" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-white/10"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-teal-600 text-white text-xs font-bold shadow-lg">Sleep Hygiene</span>
+        </div>
+        <div class="p-7 sm:p-10 space-y-4 flex flex-col justify-center">
+          <div class="flex items-center space-x-3 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+            <span class="inline-flex items-center gap-1.5"><i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i> Oct 3, 2026</span>
+            <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+            <span class="inline-flex items-center gap-1.5"><i data-lucide="clock" class="w-3.5 h-3.5 text-teal-600"></i> 6 min read</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+            The 3-2-1 Rule: A Simple Framework for Better Sleep
+          </h3>
+          <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            No food 3 hours before bed, no fluids 2 hours before, no screens 1 hour before. We break down the physiology behind each cutoff — and why patients who follow it for two weeks report measurable gains in sleep quality.
+          </p>
+          <div class="flex items-center space-x-3 rtl:space-x-reverse pt-2">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=200&q=80" alt="Dr. Melissa Torres" class="w-10 h-10 rounded-full object-cover object-top ring-2 ring-teal-500/30">
+            <div class="leading-tight">
+              <p class="text-sm font-bold text-slate-800 dark:text-white">Dr. Melissa Torres, MD</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Board-Certified Somnologist</p>
+            </div>
+          </div>
+          <button onclick="openAppointmentModal()" class="inline-flex items-center space-x-2 rtl:space-x-reverse self-start px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-sm font-bold transition shadow-md shadow-teal-500/20">
+            <span>Read Article</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Latest Articles ── -->
+  <section id="latest" class="py-20 bg-white dark:bg-slate-900 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+          <span>From the Journal</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Latest Articles</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm">Reviewed by our clinical team before every publish.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+
+        <!-- Card 1 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/HYPNOGRAM_created_by_Natasha_k.jpg" alt="Hypnogram sleep stage chart" class="absolute inset-0 w-full h-full object-cover bg-white group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">Diagnostics</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Sep 28, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Understanding Your Sleep Study Results: AHI, RDI &amp; What They Mean</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Your report is full of numbers — here is how to read apnoea-hypopnoea index, oxygen nadir, and sleep efficiency, and what each one means for treatment.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/CPAP_continuous_positive_airway_pressure_mask_installed.jpg/1280px-CPAP_continuous_positive_airway_pressure_mask_installed.jpg" alt="CPAP mask fitted on a patient" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">CPAP Therapy</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Sep 21, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>7 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">CPAP Not Working? 7 Fixes to Try Before Giving Up</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">From mask leaks to aerophagia and pressure comfort — the step-by-step troubleshooting our therapists walk patients through every week.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.pexels.com/photos/7556638/pexels-photo-7556638.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Woman frustrated in bed while her partner snores" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">Sleep Apnoea</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Sep 14, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>4 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Snoring vs. Sleep Apnoea: When Snoring Means Something More</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Loud snoring is common — but witnessed breathing pauses, gasping, and morning headaches point to obstructive sleep apnoea. Here's how to tell them apart.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1762010294857-3879a678a050?auto=format&fit=crop&w=1200&q=80" alt="Bedroom with sunlight streaming through window curtains" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">Sleep Hygiene</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Sep 7, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>5 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Morning Light: The Most Underrated Sleep Habit</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Ten minutes of daylight within an hour of waking sets your circadian clock — and quietly improves night-time sleep quality more than most supplements.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.pexels.com/photos/8376321/pexels-photo-8376321.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pulse oximeter measuring oxygen levels on a finger" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">Diagnostics</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Aug 30, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>6 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Home vs. In-Lab Sleep Testing: Which Is Right for You?</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Two valid ways to diagnose sleep apnoea — very different experiences. We compare cost, accuracy, comfort, and who each test suits best.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="group rounded-3xl bg-slate-50 dark:bg-slate-950 border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:shadow-teal-500/5 transition-shadow">
+          <div class="relative h-44 overflow-hidden">
+            <img src="https://images.pexels.com/photos/8416435/pexels-photo-8416435.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Man lying awake in bed, unable to sleep" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white/95 dark:bg-slate-900/95 text-teal-700 dark:text-teal-300 text-[11px] font-bold">Insomnia</span>
+          </div>
+          <div class="p-6 space-y-3">
+            <div class="flex items-center space-x-2 rtl:space-x-reverse text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <i data-lucide="calendar-check" class="w-3.5 h-3.5 text-teal-600"></i><span>Aug 23, 2026</span>
+              <span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+              <span>8 min read</span>
+            </div>
+            <h3 class="font-black text-slate-900 dark:text-white text-base leading-snug group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">Insomnia and Your Heart: Why Sleep Loss Is a Cardiovascular Risk</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-xs leading-relaxed">Chronic short sleep is linked to hypertension, atrial fibrillation, and metabolic disease. What the latest research says — and how CBT-I helps.</p>
+            <span class="inline-flex items-center gap-1.5 text-teal-600 dark:text-teal-400 text-xs font-bold pt-1">Read article <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i></span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Browse by Topic ── -->
+  <section id="topics" class="py-20 bg-slate-50 dark:bg-slate-950 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div>
+        <span class="inline-flex items-center space-x-2 rtl:space-x-reverse px-3 py-1 rounded-full bg-teal-50 dark:bg-teal-950/60 border border-teal-200/60 dark:border-teal-800 text-teal-700 dark:text-teal-300 text-xs font-bold tracking-wide mb-4">
+          <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+          <span>Topic Library</span>
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">Browse by Topic</h2>
+        <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm">Pick a subject and explore every article we've published on it.</p>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Sleep Hygiene <span class="text-slate-400 font-normal">· 12</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Sleep Apnoea <span class="text-slate-400 font-normal">· 18</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">CPAP Therapy <span class="text-slate-400 font-normal">· 15</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Insomnia <span class="text-slate-400 font-normal">· 9</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Sleep Testing <span class="text-slate-400 font-normal">· 11</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Pediatric Sleep <span class="text-slate-400 font-normal">· 6</span></span>
+        <span class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-teal-400 hover:text-teal-600 transition cursor-pointer">Research <span class="text-slate-400 font-normal">· 7</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Newsletter ── -->
+  <section id="newsletter" class="py-20 bg-white dark:bg-slate-900 scroll-mt-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="relative rounded-[2rem] overflow-hidden bg-gradient-to-br from-teal-600 via-teal-700 to-emerald-700 p-8 sm:p-12 text-center space-y-6 shadow-xl shadow-teal-500/20">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.5)_0%,transparent_45%),radial-gradient(circle_at_80%_75%,rgba(255,255,255,0.35)_0%,transparent_45%)]"></div>
+        <div class="relative space-y-3">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/30 text-white text-xs font-bold">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i> Monthly Newsletter
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Sleep Smarter, Every Month</h2>
+          <p class="text-teal-100 text-sm max-w-xl mx-auto">One email a month: new articles, clinic updates, and one practical tip you can try that night. No spam — unsubscribe anytime.</p>
+        </div>
+        <form onsubmit="return subscribeNewsletter(event)" class="relative flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
+          <input type="email" required placeholder="you@example.com" class="w-full sm:flex-1 px-5 py-3 rounded-xl bg-white text-slate-800 placeholder-slate-400 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white/70 shadow-md">
+          <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-sm font-bold shadow-lg transition inline-flex items-center justify-center gap-2">
+            <span>Subscribe</span><i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </form>
+        <p id="newsletter-msg" class="relative hidden text-white text-sm font-semibold"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Banner ── -->
+  <section class="py-20 bg-gradient-to-br from-teal-600 via-teal-700 to-teal-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Reading About Sleep Is a Good Start. Let's Diagnose It.</h2>
+      <p class="text-teal-100 text-base leading-relaxed max-w-xl mx-auto">
+        If your symptoms match anything you've read here, our board-certified somnologists can put a name to it — with a sleep study tailored to you.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <button onclick="openAppointmentModal()" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 rounded-xl bg-white text-teal-700 font-bold text-sm shadow-lg hover:bg-teal-50 transition">
+          <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+          <span>Book a Sleep Evaluation</span>
+        </button>
+        <a href="services.html" class="inline-flex items-center space-x-2 rtl:space-x-reverse px-6 py-3 rounded-xl border-2 border-white/40 text-white font-semibold text-sm hover:bg-white/10 transition">
+          <i data-lucide="activity" class="w-4 h-4"></i>
+          <span>View Clinical Services</span>
+        </a>
+      </div>
+      <p class="text-teal-200/70 text-xs">⚕ Medical Disclaimer: All content on this page is for educational purposes only and does not constitute medical advice. Always consult a qualified healthcare provider for diagnosis and treatment.</p>
+    </div>
+  </section>
+
+  <!-- ── Clinical Footer ── -->
+  <footer id="main-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js?v=20261007f"></script>
+  <script src="js/nav.js?v=20261007e"></script>
+  <script src="js/footer.js?v=20261007e"></script>
+  <script>
+    if (window.lucide) lucide.createIcons();
+
+    function subscribeNewsletter(e) {
+      e.preventDefault();
+      const msg = document.getElementById('newsletter-msg');
+      msg.textContent = 'Thanks! Check your inbox to confirm your subscription.';
+      msg.classList.remove('hidden');
+      e.target.reset();
+      if (window.lucide) lucide.createIcons();
+      return false;
+    }
+  </script>
+</body>
+</html>
