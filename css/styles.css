@@ -77,6 +77,14 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(16px);
 }
 
+/* Consistent hero banner height across all site pages */
+.page-hero {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Fixed dashboard sidebar drawer (off-canvas on mobile, docked on lg) */
 .dashboard-drawer {
   visibility: hidden;

@@ -80,11 +80,6 @@ function initNavbar() {
               About
             </a>
 
-            <!-- Blog Link -->
-            <a href="blog.html" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition ${isBlog ? 'text-teal-600 dark:text-teal-400 bg-teal-50/70 dark:bg-teal-950/40' : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'}">
-              Blog
-            </a>
-
             <!-- Services Link -->
             <a href="services.html" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition ${isServices ? 'text-teal-600 dark:text-teal-400 bg-teal-50/70 dark:bg-teal-950/40' : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'}">
               Services
@@ -93,6 +88,11 @@ function initNavbar() {
             <!-- Doctors Link -->
             <a href="doctors.html" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition ${isDoctors ? 'text-teal-600 dark:text-teal-400 bg-teal-50/70 dark:bg-teal-950/40' : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'}">
               Doctors
+            </a>
+
+            <!-- Blog Link -->
+            <a href="blog.html" class="px-3.5 py-2 rounded-xl text-sm font-semibold transition ${isBlog ? 'text-teal-600 dark:text-teal-400 bg-teal-50/70 dark:bg-teal-950/40' : 'text-slate-700 dark:text-slate-200 hover:text-teal-600 dark:hover:text-teal-400 hover:bg-slate-50 dark:hover:bg-slate-800/50'}">
+              Blog
             </a>
 
             <!-- Contact Link -->
@@ -172,16 +172,16 @@ function initNavbar() {
           <span>About Clinic</span>
         </a>
 
-        <a href="blog.html" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
-          <span>Blog</span>
-        </a>
-
         <a href="services.html" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
           <span>Services</span>
         </a>
 
         <a href="doctors.html" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
           <span>Doctors & Specialists</span>
+        </a>
+
+        <a href="blog.html" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
+          <span>Blog</span>
         </a>
 
         <a href="contact.html" class="block py-2.5 px-3 rounded-xl text-sm font-semibold text-slate-800 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">
